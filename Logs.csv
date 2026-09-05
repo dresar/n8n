@@ -1,0 +1,6 @@
+id,workflow,level,pesan,waktu
+1,Instagram Reels Automation,INFO,Workflow dimulai - Mode Otomatis,2026-01-10T08:00:00.000Z
+2,Instagram Reels Automation,INFO,"Upload sukses: video_contoh_001.mp4 | Post ID: 17841234567890123",2026-01-10T08:05:00.000Z
+3,Instagram Reels Automation,ERROR,"Upload gagal: video_contoh_002.mp4 - Error: Container processing failed",2026-01-11T09:10:00.000Z
+4,Instagram Reels Automation,INFO,Workflow dimulai - Mode Manual via Telegram,2026-01-12T10:00:00.000Z
+5,Instagram Reels Automation,INFO,Akun aktif berhasil diganti ke: Akun Kedua,2026-01-12T10:01:00.000Z

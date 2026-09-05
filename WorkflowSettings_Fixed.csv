@@ -1,0 +1,8 @@
+id,nama_setting,nilai,keterangan
+1,max_retry,3,Jumlah maksimal percobaan ulang upload yang gagal
+2,polling_interval,15,Interval polling status container Instagram dalam detik
+3,scheduler_interval_hours,3,Interval jadwal otomatis dalam jam
+4,telegram_chat_id,7896674035,Chat ID Telegram untuk notifikasi utama
+5,cloudinary_folder,instagram_reels,Nama folder di Cloudinary untuk menyimpan video sementara
+6,default_caption_prompt,"Buat satu caption singkat gaya hidup sehari-hari, maksimal 25 kata, tanpa menjelaskan isi video, tambahkan 3 hashtag relevan.",Template prompt default untuk AI caption
+7,instagram_api_version,v25.0,Versi Meta Graph API yang digunakan

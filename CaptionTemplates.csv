@@ -1,0 +1,6 @@
+id,nama_template,prompt,aktif
+1,Gaya Hidup,"Buat satu caption singkat gaya hidup sehari-hari, maksimal 25 kata, tanpa menjelaskan isi video, tambahkan 3 hashtag relevan.",true
+2,Inspiratif,"Tulis caption inspiratif dan memotivasi, maksimal 20 kata, gunakan emoji yang sesuai, sertakan 5 hashtag trending.",true
+3,Produk UMKM,"Buat caption promosi produk lokal yang menarik, maksimal 30 kata, call-to-action di akhir, tambahkan 3 hashtag bisnis.",false
+4,Wisata,"Tulis caption perjalanan yang menginspirasi, maksimal 25 kata, sertakan nama tempat jika memungkinkan, tambahkan 4 hashtag wisata.",true
+5,Kuliner,"Buat caption makanan yang menggugah selera, maksimal 20 kata, gunakan deskripsi yang vivid, tambahkan 3 hashtag kuliner.",false

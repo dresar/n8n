@@ -1,0 +1,854 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appafQ1viq4sJXOve",
+          "mode": "list",
+          "cachedResultName": "n8n",
+          "cachedResultUrl": "https://airtable.com/appafQ1viq4sJXOve"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblBAgS2enNJfFo5R",
+          "mode": "list",
+          "cachedResultName": "Table 1",
+          "cachedResultUrl": "https://airtable.com/appafQ1viq4sJXOve/tblBAgS2enNJfFo5R"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "URL": "={{ $('Code').item.json.url }}",
+            "Name": "={{ $('Code').item.json.fileName }}",
+            "FileID": "={{ $('Code').item.json.fileId }}",
+            "caption": "={{ $json.choices[0].message.content }}",
+            "Status": "Processing",
+            "ExecutionID": 0,
+            "PostedAt": "2026-08-03T21:25:55"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "caption",
+              "displayName": "caption",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "URL",
+              "displayName": "URL",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "FileID",
+              "displayName": "FileID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "PostedAt",
+              "displayName": "PostedAt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "TimeSlot",
+              "displayName": "TimeSlot",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "siang",
+                  "value": "siang"
+                },
+                {
+                  "name": "malam",
+                  "value": "malam"
+                },
+                {
+                  "name": "pagi",
+                  "value": "pagi"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Processing",
+                  "value": "Processing"
+                },
+                {
+                  "name": "Published",
+                  "value": "Published"
+                },
+                {
+                  "name": "Failed",
+                  "value": "Failed"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "InstagramMediaID",
+              "displayName": "InstagramMediaID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "ExecutionID",
+              "displayName": "ExecutionID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "ec196a44-ad23-48fb-b794-e82512992a79",
+      "name": "Airtable",
+      "type": "n8n-nodes-base.airtable",
+      "position": [
+        2640,
+        336
+      ],
+      "typeVersion": 2.1,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "AbYqCc6ZdNGvzBSy",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpRequestMethod": "POST",
+        "graphApiVersion": "v25.0",
+        "node": "17841461627211970",
+        "edge": "media",
+        "options": {
+          "queryParameters": {
+            "parameter": [
+              {
+                "name": "video_url",
+                "value": "={{ $json.fields.URL }}"
+              },
+              {
+                "name": "media_type",
+                "value": "REELS"
+              },
+              {
+                "name": "caption",
+                "value": "={{ $('code1').item.json.caption }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "59886aa0-894c-4b9b-b6ee-26d8a58618d1",
+      "name": "container",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "position": [
+        2784,
+        336
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "facebookGraphApi": {
+          "id": "p2nV37T8gVHXU2m0",
+          "name": "Facebook Graph account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "deleteFile",
+        "fileId": {
+          "__rl": true,
+          "mode": "url",
+          "value": "={{ $('Post File Download in N8N (Google Drive Node)').item.json.webViewLink }}"
+        },
+        "options": {}
+      },
+      "id": "01b0a124-afe1-4ed2-b7ab-a2c8025fd535",
+      "name": "Google Drive1",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        3920,
+        352
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "sSjCMUXWgv6xebzu",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "unit": "minutes"
+      },
+      "id": "a787f50a-a474-46dd-b686-c9e91d093383",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "position": [
+        3104,
+        352
+      ],
+      "webhookId": "REDACTED_WEBHOOK_ID",
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "amount": 20
+      },
+      "id": "0a217ae1-07a1-4a81-b638-9d5c3186ee13",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "position": [
+        3552,
+        352
+      ],
+      "webhookId": "REDACTED_WEBHOOK_ID",
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $json.id }}"
+        },
+        "options": {}
+      },
+      "id": "b79d41e2-a7c4-4a12-83d9-9c7f4a9d24e4",
+      "name": "Post File Download in N8N (Google Drive Node)",
+      "type": "n8n-nodes-base.googleDrive",
+      "position": [
+        1760,
+        352
+      ],
+      "typeVersion": 3,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "sSjCMUXWgv6xebzu",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const response = items[0].json;\n\nif (!response.success || !response.file) {\n  throw new Error(\"Upload ke Apprentice CDN gagal.\");\n}\n\nconst file = response.file;\n\nreturn [{\n  json: {\n    success: true,\n    fileId: file.id,\n    publicId: file.id,\n    fileName: file.filename,\n    originalName: file.originalName,\n    url: file.url,\n    cdnUrl: file.cdnUrl || file.url,\n    playbackUrl: file.cdnUrl || file.url,\n    mimeType: file.mimeType,\n    size: file.size,\n    createdAt: file.createdAt,\n    expiresAt: file.expiresAt,\n    expiryMinutes: file.expiryMinutes,\n    metadata: file.metadata || {}\n  }\n}];"
+      },
+      "id": "e39cd6b0-f13b-4dff-b61a-6fcabf9b360d",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        2208,
+        352
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "url": "https://www.googleapis.com/drive/v3/files",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "'1cymX2tqqT6TewB_m8AEnzn3puX6ZjWKJ' in parents and mimeType='video/mp4' and trashed = false"
+            },
+            {
+              "name": "fields",
+              "value": "files(id, name, mimeType, parents)"
+            },
+            {
+              "name": "supportsAllDrives",
+              "value": "true"
+            },
+            {
+              "name": "includeItemsFromAllDrives",
+              "value": "true"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "14364c30-9b47-4d99-9c31-b99cfd950b12",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        480,
+        240
+      ],
+      "typeVersion": 4.2,
+      "credentials": {
+        "googleOAuth2Api": {
+          "id": "0sZ3AhgRR0qUwBTb",
+          "name": "Google account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://www.googleapis.com/drive/v3/files/{{ $('Code1').item.json.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "addParents",
+              "value": "1_AGg0tZd_p1WWct3LuqB_h3Zyv7MZeSp"
+            },
+            {
+              "name": "removeParents",
+              "value": "1cymX2tqqT6TewB_m8AEnzn3puX6ZjWKJ"
+            },
+            {
+              "name": "fields",
+              "value": "id,name,parents,webViewLink,webContentLink,mimeType"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "57b260e7-d4f1-4dc1-8b07-b72930c8d315",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1232,
+        240
+      ],
+      "typeVersion": 4.2,
+      "credentials": {
+        "googleOAuth2Api": {
+          "id": "0sZ3AhgRR0qUwBTb",
+          "name": "Google account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 35
+            }
+          ]
+        }
+      },
+      "id": "4357f453-4851-433c-af1d-8585c62af88e",
+      "name": "Schedule Trigger1",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        112,
+        256
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "jsCode": "const responseData = items[0].json;\n\nif (!responseData || !responseData.files || responseData.files.length === 0) {\n  console.warn(\"No files found in the source Google Drive folder via API or API response was unexpected.\");\n  return [];\n}\n\nconst filesArray = responseData.files;\nconst randomIndex = Math.floor(Math.random() * filesArray.length);\nconst randomFile = filesArray[randomIndex];\n\nreturn [{ json: randomFile }];"
+      },
+      "id": "2a0cfddd-f99f-48ca-ba87-4a0366eda655",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "position": [
+        736,
+        240
+      ],
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "amount": 20
+      },
+      "id": "1df9b0b3-fdf1-4083-80fc-3997a4b216bd",
+      "name": "Wait2",
+      "type": "n8n-nodes-base.wait",
+      "position": [
+        1536,
+        256
+      ],
+      "webhookId": "REDACTED_WEBHOOK_ID",
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "httpRequestMethod": "POST",
+        "graphApiVersion": "v25.0",
+        "node": "17841461627211970",
+        "edge": "media_publish",
+        "options": {
+          "queryParameters": {
+            "parameter": [
+              {
+                "name": "creation_id",
+                "value": "={{ $json.id }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "2aeb76dc-b5ab-4331-89e1-b5d3db8e06cf",
+      "name": "Post to IG",
+      "type": "n8n-nodes-base.facebookGraphApi",
+      "position": [
+        3328,
+        352
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "facebookGraphApi": {
+          "id": "p2nV37T8gVHXU2m0",
+          "name": "Facebook Graph account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "7896674035",
+        "text": "=🚀 <b>INSTAGRAM REELS AUTOMATION</b>\n\n━━━━━━━━━━━━━━━━━━━━\n\n🎬 <b>Video</b>\n<code>{{ $json.name }}</code>\n\n📂 <b>Source</b>\nGoogle Drive\n\n🆔 <b>File ID</b>\n<code>{{ $json.id }}</code>\n\n⏰ <b>Started</b>\n<code>{{ $now.format(\"dd MMM yyyy • HH:mm:ss\") }}</code>\n\n📊 <b>Progress</b>\n🟢 Downloading Video\n\n━━━━━━━━━━━━━━━━━━━━\n\n🤖 <i>Workflow sedang diproses...</i>",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        960,
+        240
+      ],
+      "id": "70bcbf36-07d0-4560-a6f3-ae54645140dc",
+      "name": "Send a text message",
+      "webhookId": "0a50fcc4-4ca0-4ef8-a15a-480199504ddd",
+      "retryOnFail": false,
+      "executeOnce": false,
+      "alwaysOutputData": false,
+      "credentials": {
+        "telegramApi": {
+          "id": "l1sKxkGYf5u23N3N",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "7896674035",
+        "text": "dah selesa",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        4208,
+        352
+      ],
+      "id": "38adb415-adf7-4618-aadd-d7cd9c6cdcbd",
+      "name": "Send a text message1",
+      "webhookId": "e56b02e6-6204-4dfb-b47e-a3590004bf01",
+      "credentials": {
+        "telegramApi": {
+          "id": "l1sKxkGYf5u23N3N",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://apprentice.cyou/api/files",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "50f690242af02beb6dd74a83"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "data"
+            },
+            {
+              "name": "expiry_minutes",
+              "value": "180"
+            },
+            {
+              "name": "meta",
+              "value": "={{ JSON.stringify({ source: 'n8n', workflow: 'instagram' }) }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "78d6fdf7-b82d-453f-aa3f-5aa375b5292c",
+      "name": "Upload CDN",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1968,
+        336
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "4kDnQh5jYzGX1Yi1",
+          "mode": "list",
+          "cachedResultName": "CaptionTemplates",
+          "cachedResultUrl": "/projects/f4KUXhqKGu3e02Wh/datatables/4kDnQh5jYzGX1Yi1"
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        2368,
+        336
+      ],
+      "id": "05a5d329-875f-42e6-bff4-ea1e7c5025ae",
+      "name": "Get row(s)"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Ambil semua row dari n8n Table\nconst rows = items;\n\nif (rows.length === 0) {\n  return [];\n}\n\n// Pilih index secara acak\nconst randomIndex = Math.floor(Math.random() * rows.length);\n\n// Kembalikan hanya 1 data\nreturn [rows[randomIndex]];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2496,
+        336
+      ],
+      "id": "3690e197-8077-4e82-9612-d0020e2adf15",
+      "name": "code1"
+    },
+    {
+      "parameters": {
+        "operation": "deleteRows",
+        "dataTableId": {
+          "__rl": true,
+          "value": "4kDnQh5jYzGX1Yi1",
+          "mode": "list",
+          "cachedResultName": "CaptionTemplates",
+          "cachedResultUrl": "/projects/f4KUXhqKGu3e02Wh/datatables/4kDnQh5jYzGX1Yi1"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('code1').item.json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        3712,
+        352
+      ],
+      "id": "6174c50a-a333-4dfa-94a1-10dca3a516d6",
+      "name": "Delete row(s)"
+    }
+  ],
+  "connections": {
+    "Airtable": {
+      "main": [
+        [
+          {
+            "node": "container",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "container": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Post to IG",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Delete row(s)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post File Download in N8N (Google Drive Node)": {
+      "main": [
+        [
+          {
+            "node": "Upload CDN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Get row(s)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Post File Download in N8N (Google Drive Node)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post to IG": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload CDN": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s)": {
+      "main": [
+        [
+          {
+            "node": "code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "code1": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete row(s)": {
+      "main": [
+        [
+          {
+            "node": "Google Drive1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "c2f7fc800e8f942e459a536a1c35644e54d007b227caebbcad93db95243301c4"
+  }
+}

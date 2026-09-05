@@ -1,0 +1,4 @@
+id,instagram_account,file_name,file_id,status,retry,created_at,updated_at
+1,Akun Utama,video_contoh_001.mp4,1FxfakeFileID001,Completed,0,2026-01-10T08:00:00.000Z,2026-01-10T08:05:00.000Z
+2,Akun Utama,video_contoh_002.mp4,1GxfakeFileID002,Failed,2,2026-01-11T09:00:00.000Z,2026-01-11T09:10:00.000Z
+3,Akun Kedua,video_contoh_003.mp4,1HxfakeFileID003,Waiting,0,2026-01-12T10:00:00.000Z,2026-01-12T10:00:00.000Z
